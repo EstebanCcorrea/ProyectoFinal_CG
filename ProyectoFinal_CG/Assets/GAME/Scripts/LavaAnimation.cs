@@ -3,7 +3,7 @@ using UnityEngine;
 public class LavaAnimation : MonoBehaviour
 {
     [Header("Velocidad del flujo")]
-    public float scrollSpeed = 0.2f; 
+    public float scrollSpeed = 0.2f;
     private Renderer rend;
 
     void Start()
@@ -17,10 +17,10 @@ public class LavaAnimation : MonoBehaviour
         float offset = Time.time * scrollSpeed;
         Vector2 newOffset = new Vector2(offset, 0); // movimiento solo en X
 
-        // Si el material usa emisión
+       
         if (rend.material.IsKeywordEnabled("_EMISSION"))
         {
-            rend.material.SetTextureOffset("_EmissionMap", newOffset * 0.5f);
+            rend.material.mainTextureOffset = newOffset;
         }
     }
 }
