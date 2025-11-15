@@ -3,12 +3,18 @@ using System.Collections;
 
 public class DoorTrigger : MonoBehaviour
 {
-    public Transform door;        // la puerta
-    public float openAngle = 90f; // ángulo al abrir
-    public float openSpeed = 2f;  // velocidad de apertura
+    public Transform door;          // La puerta
+    public Vector3 openOffset;      // Hacia dónde se mueve (ej: (0,0,3) )
+    public float openSpeed = 2f;    // Velocidad
     public bool requiresKey = true;
 
     private bool opened = false;
+    private Vector3 closedPos;
+
+    private void Start()
+    {
+        closedPos = door.position; // Guardamos posición original
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +24,7 @@ public class DoorTrigger : MonoBehaviour
         {
             if (requiresKey)
             {
-                // verifica si el player tiene la llave
+                // Verifica si el player tiene la llave
                 KeyFollowPlayer key = other.GetComponentInChildren<KeyFollowPlayer>();
                 if (key == null)
                 {
@@ -34,15 +40,13 @@ public class DoorTrigger : MonoBehaviour
 
     IEnumerator OpenDoor()
     {
-        Quaternion startRot = door.rotation;
-        Quaternion endRot = Quaternion.Euler(0, openAngle, 0);
-
+        Vector3 targetPos = closedPos + openOffset; // posición final
         float t = 0;
 
         while (t < 1)
         {
             t += Time.deltaTime * openSpeed;
-            door.rotation = Quaternion.Slerp(startRot, endRot, t);
+            door.position = Vector3.Lerp(closedPos, targetPos, t);
             yield return null;
         }
     }
