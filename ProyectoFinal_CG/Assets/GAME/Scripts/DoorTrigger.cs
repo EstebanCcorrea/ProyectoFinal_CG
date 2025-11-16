@@ -4,7 +4,7 @@ using System.Collections;
 public class DoorTrigger : MonoBehaviour
 {
     public Transform door;          // La puerta
-    public Vector3 openOffset;      // Hacia dónde se mueve (ej: (0,0,3) )
+    public Vector3 openOffset;      // Dirección y distancia del movimiento
     public float openSpeed = 2f;    // Velocidad
     public bool requiresKey = true;
 
@@ -13,7 +13,7 @@ public class DoorTrigger : MonoBehaviour
 
     private void Start()
     {
-        closedPos = door.position; // Guardamos posición original
+        closedPos = door.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +24,6 @@ public class DoorTrigger : MonoBehaviour
         {
             if (requiresKey)
             {
-                // Verifica si el player tiene la llave
                 KeyFollowPlayer key = other.GetComponentInChildren<KeyFollowPlayer>();
                 if (key == null)
                 {
@@ -33,14 +32,27 @@ public class DoorTrigger : MonoBehaviour
                 }
             }
 
-            StartCoroutine(OpenDoor());
-            opened = true;
+            Open();
         }
+    }
+
+    public void ActivateDoor()
+    {
+        if (!opened)
+        {
+            Open();
+        }
+    }
+
+    private void Open()
+    {
+        opened = true;
+        StartCoroutine(OpenDoor());
     }
 
     IEnumerator OpenDoor()
     {
-        Vector3 targetPos = closedPos + openOffset; // posición final
+        Vector3 targetPos = closedPos + openOffset;
         float t = 0;
 
         while (t < 1)
