@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class PlataformasGiratorias : MonoBehaviour
+public class PlataformsG: MonoBehaviour
 {
-    public float velocidadRotacion = 50f;
+    [Header("Rotación")]
+    public float velocidad = 40f;
+    public Vector3 eje = new Vector3(0, 1, 0); // rota en el eje Y
 
     void Update()
     {
-        transform.Rotate(0, velocidadRotacion * Time.deltaTime, 0);
+        transform.Rotate(eje * velocidad * Time.deltaTime);
     }
 }
