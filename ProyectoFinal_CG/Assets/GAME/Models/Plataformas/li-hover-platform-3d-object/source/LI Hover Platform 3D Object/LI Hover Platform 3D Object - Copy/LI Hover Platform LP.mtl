@@ -1,0 +1,180 @@
+newmtl Platform_Base
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Lights_HandRail
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Handrail_Joints
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Handrail_Arcs
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Handrail_Poles
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Platform_Band
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Lights_Platform_Band
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Rings_Platform_Band
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Platform_Supports
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Platform_Support_Ring_01
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Platform_Support_Ring_02
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Light_Centre_Core
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Light_Inner_Ring
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Light_Outer_Ring
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
+newmtl Platform_Centre
+Ns 100.000
+d 1.00000
+illum 2
+Kd 1.00000 1.00000 1.00000
+Ka 0.00000 0.00000 0.00000
+Ks 1.00000 1.00000 1.00000
+Ke 0.00000e+0 0.00000e+0 0.00000e+0
+map_Kd A_LI Hover Platform_albedo.jpg
+map_Ks A_LI Hover Platform_roughness.jpg
+bump A_LI Hover Platform_bump.jpg
+map_bump A_LI Hover Platform_normal.jpg
