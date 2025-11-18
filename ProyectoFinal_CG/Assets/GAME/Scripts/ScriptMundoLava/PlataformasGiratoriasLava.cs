@@ -1,18 +1,18 @@
 using UnityEngine;
 
 public class PlataformasGiratoriasLava : MonoBehaviour
-
 {
     [Header("Rotación")]
     public float rotationSpeed = 50f;
     private bool canRotate = true;
 
-    [Header("Movimiento")]
-    public Transform targetPoint;
-    public float moveSpeed = 3f;
+    [Header("Movimiento Vertical")]
+    public float altura = 5f;     // cuánto sube
+    public float velocidad = 2f;  // qué tan rápido sube y baja
 
-    private Vector3 startPoint;
-    private bool moveToTarget = false;
+    private Vector3 puntoInicial;
+    private Vector3 puntoArriba;
+    private bool subir = false;
     private bool playerOnPlatform = false;
 
     private Rigidbody rb;
@@ -22,86 +22,48 @@ public class PlataformasGiratoriasLava : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
 
-        startPoint = transform.position;
+        puntoInicial = transform.position;
+        puntoArriba = puntoInicial + new Vector3(0, altura, 0);
     }
 
     void Update()
     {
-        // Rotación solo cuando esté permitido
         if (canRotate)
             transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     void FixedUpdate()
     {
-        if (moveToTarget)
+        if (subir)
         {
-            MoveTowards(targetPoint.position);
-
-            // Si llegó al destino
-            if (Vector3.Distance(transform.position, targetPoint.position) < 0.3f)
-            {
-                moveToTarget = false;
-
-                // Cuando llegue, si el jugador NO está encima este regresa
-                Invoke(nameof(ReturnToStart), 1f);
-            }
+            rb.MovePosition(Vector3.MoveTowards(transform.position, puntoArriba, velocidad * Time.deltaTime));
+        }
+        else
+        {
+            rb.MovePosition(Vector3.MoveTowards(transform.position, puntoInicial, velocidad * Time.deltaTime));
         }
     }
 
-    void MoveTowards(Vector3 destination)
-    {
-        Vector3 direction = (destination - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * moveSpeed * Time.deltaTime);
-    }
-
-    void ReturnToStart()
-    {
-        StartCoroutine(ReturnRoutine());
-    }
-
-    System.Collections.IEnumerator ReturnRoutine()
-    {
-        canRotate = false; // no girar mientras vuelve
-
-        while (Vector3.Distance(transform.position, startPoint) > 0.2f)
-        {
-            MoveTowards(startPoint);
-            yield return null;
-        }
-
-        transform.position = startPoint;
-        canRotate = true; // vuelve a girar
-    }
-
-    // Detectamos cuándo el player se sube
     void OnCollisionEnter(Collision col)
     {
         if (col.collider.CompareTag("Player"))
         {
             playerOnPlatform = true;
-
-            // detener rotación y empezar movimiento
-            canRotate = false;
-            moveToTarget = true;
+            canRotate = false;   // deja de girar
+            subir = true;        // empieza a subir
         }
     }
 
-    // Detectamos cuándo el player se baja
     void OnCollisionExit(Collision col)
     {
         if (col.collider.CompareTag("Player"))
         {
             playerOnPlatform = false;
-
-            // si ya no está y no estamos moviéndonos, volver a girar
-            if (!moveToTarget)
-            {
-                canRotate = true;
-                ReturnToStart();
-            }
+            subir = false;       // baja
+            canRotate = true;    // vuelve a girar al llegar abajo
         }
     }
 }
+
 
 
