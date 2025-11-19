@@ -8,8 +8,8 @@ public class PlataformasGiratoriasLava : MonoBehaviour
 
     [Header("Movimiento Vertical")]
     public float altura = 5f;     // cuánto sube
-    public float velocidad = 2f;  
-    public float alturaMaxima = 10f; // Altura máxima 
+    public float velocidad = 2f;  // qué tan rápido sube y baja
+    public float alturaMaxima = 10f; // Altura máxima a la que debe llegar la plataforma
 
     private Vector3 puntoInicial;
     private Vector3 puntoArriba;
@@ -51,7 +51,7 @@ public class PlataformasGiratoriasLava : MonoBehaviour
         if (col.collider.CompareTag("Player"))
         {
             playerOnPlatform = true;
-            canRotate = false;   // Deja de girar
+            canRotate = false;   // Detener la rotación mientras sube
             subir = true;        // Empieza a subir
         }
     }
@@ -61,7 +61,7 @@ public class PlataformasGiratoriasLava : MonoBehaviour
         if (col.collider.CompareTag("Player"))
         {
             playerOnPlatform = false;
-            subir = false;       // Baja
+            subir = false;       // Baja la plataforma
             canRotate = true;    // Vuelve a girar al llegar abajo
         }
     }
