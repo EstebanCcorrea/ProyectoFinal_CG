@@ -16,10 +16,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI itemsText;
     public TextMeshProUGUI messageText;
 
-
     private int score;
     private int totalItems;
-    private int collectedItemsCount; // Renombrado para mayor claridad
+    private int collectedItemsCount;
 
     private void Awake()
     {
@@ -30,14 +29,15 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // si solo usas 1 escena, igual no estorba
+        DontDestroyOnLoad(gameObject);
     }
-
+    public Transform GetSpawnPoint()
+    {
+        return playerSpawnPoint; 
+    }
     private void Start()
     {
-        // Contamos los CollectibleItems en la escena
         totalItems = Object.FindObjectsByType<CollectibleItem>(FindObjectsSortMode.None).Length;
-
         UpdateScoreUI();
         UpdateItemsUI();
     }
@@ -75,10 +75,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Corregir error de tipografía
     public bool AllItemsCollected()
     {
-        return collectedItemsCount >= totalItems && totalItems > 0; // Cambié cCollectibleItem por collectedItemsCount
+        return collectedItemsCount >= totalItems && totalItems > 0;
     }
 
     public void ShowMessage(string msg, float duration = 2f)
@@ -99,10 +98,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public Transform playerSpawnPoint;
+
     public void RestartScene()
     {
-        Scene current = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(current.buildIndex);
+        
+        if (playerSpawnPoint != null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.transform.position = playerSpawnPoint.position;
+            player.transform.rotation = playerSpawnPoint.rotation;
+            player.GetComponent<PlayerHealth>().RestoreHealth();  // Restaurar vida
+        }
+
+        // Luego reinicia la escena
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex);
     }
 
     public void LoadScene(string sceneName)

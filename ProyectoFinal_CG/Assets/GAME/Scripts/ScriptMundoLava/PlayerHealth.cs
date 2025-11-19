@@ -3,43 +3,48 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
-    private float currentHealth;
+    public float CurrentHealth;  
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = maxHealth;  
 
+        // Si GameManager existe, lo vinculamos 
         if (GameManager.Instance != null)
         {
             GameManager.Instance.playerHealth = this;
-            GameManager.Instance.UpdateHealthUI(currentHealth, maxHealth);
+            GameManager.Instance.UpdateHealthUI(CurrentHealth, maxHealth);  // se actualiza la UI
         }
     }
 
+    // Método para aplicar daño al player
     public void TakeDamage(float amount)
     {
         if (amount <= 0f) return;
 
-        currentHealth -= amount;
-        currentHealth = Mathf.Max(currentHealth, 0f);
+        CurrentHealth -= amount;
+        CurrentHealth = Mathf.Max(CurrentHealth, 0f);  
 
+        // Actualizar la UI
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.UpdateHealthUI(currentHealth, maxHealth);
+            GameManager.Instance.UpdateHealthUI(CurrentHealth, maxHealth);
         }
 
-        if (currentHealth <= 0f)
+        if (CurrentHealth <= 0f)
         {
-            Die();
+           
         }
     }
 
-    private void Die()
+ 
+
+    public void RestoreHealth()
     {
+        CurrentHealth = maxHealth; 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.ShowMessage("Has muerto en la lava...");
-            GameManager.Instance.RestartScene();
+            GameManager.Instance.UpdateHealthUI(CurrentHealth, maxHealth); 
         }
     }
 }
