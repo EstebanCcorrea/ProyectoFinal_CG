@@ -8276,7 +8276,7 @@ Transform:
   m_GameObject: {fileID: 121980325}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.24314445, z: -0, w: -0.96999013}
-  m_LocalPosition: {x: -12.744096, y: 3.38, z: -34.8638}
+  m_LocalPosition: {x: -13.39, y: 3.05, z: -35.59}
   m_LocalScale: {x: 1.58, y: 1.58, z: 1.58}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -10734,6 +10734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: Nave Galaxy
+  puedeDesaparecer: 0
 --- !u!1001 &229125953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11321,6 +11322,22 @@ PrefabInstance:
     - target: {fileID: 974238578668270704, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 974238578668270714, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 974238578668270714, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 974238578668270715, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+      propertyPath: LockCameraPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 974238578668270715, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+      propertyPath: GroundLayers.m_Bits
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 2119775930974504096, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16096,25 +16113,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1910565838}
     m_Modifications:
-    - target: {fileID: 8782220222800227152, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782220222800227152, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
-      propertyPath: m_TagString
-      value: ObjetoInteractivo
-      objectReference: {fileID: 0}
     - target: {fileID: 8782220222800227160, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
       propertyPath: m_Name
       value: Respawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782220222800227160, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8782220222800227160, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
-      propertyPath: m_TagString
-      value: ObjetoInteractivo
       objectReference: {fileID: 0}
     - target: {fileID: 8782220222800459640, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16579,6 +16580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: "Supera los obstaculos para llegar al final\nEncontr\xE1s unas recompensa
     misteriosa"
+  puedeDesaparecer: 0
 --- !u!65 &526133481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17028,6 +17030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: Hola
+  puedeDesaparecer: 0
 --- !u!65 &570203875
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17706,6 +17709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: Presiona E para interactuar
+  puedeDesaparecer: 0
 --- !u!65 &648513189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18320,7 +18324,7 @@ Transform:
   m_GameObject: {fileID: 737193479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9868595, z: -0, w: -0.16158076}
-  m_LocalPosition: {x: -14.5, y: -1.01, z: -26.9}
+  m_LocalPosition: {x: -14.66, y: -1.01, z: -27.81}
   m_LocalScale: {x: 1.58, y: 1.58, z: 1.58}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -18680,6 +18684,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1653851733}
     m_Modifications:
     - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.24
       objectReference: {fileID: 0}
@@ -18689,7 +18697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.07
+      value: -3.86
       objectReference: {fileID: 0}
     - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25644,6 +25652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: Nave Espacial
+  puedeDesaparecer: 0
 --- !u!1 &958431561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4202339324947866261, guid: 7019adde3ea74b444b5d35e375f0e570, type: 3}
@@ -30024,6 +30033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
   mensaje: Presiona E para interactuar
+  puedeDesaparecer: 0
 --- !u!1 &1196315655
 GameObject:
   m_ObjectHideFlags: 0
@@ -38993,6 +39003,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8946309814507595389, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
+      propertyPath: m_Pitch
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946309814507595389, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
+      propertyPath: m_Volume
+      value: 0.468
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946309814507595389, guid: 2d7f64a7a8656b545993713cae4b47b5, type: 3}
+      propertyPath: MinDistance
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46443,7 +46465,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 86ebe9f64350fa64a83fa3322f3830c0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.769
+  m_Volume: 0.416
   m_Pitch: 0.6
   Loop: 0
   Mute: 0
@@ -46961,7 +46983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8052838820671999634, guid: 9ddd8d283820043489cacd6999f407db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.6000004
+      value: -7.61
       objectReference: {fileID: 0}
     - target: {fileID: 8052838820671999634, guid: 9ddd8d283820043489cacd6999f407db, type: 3}
       propertyPath: m_LocalPosition.z
@@ -47626,6 +47648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1653851733}
     m_Modifications:
+    - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1760835596237982820, guid: 7cb3a9f234c5c1e47b4d2a1fb1cd8ba9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.639449
