@@ -6,7 +6,8 @@ public class CollectibleItem : MonoBehaviour
     {
         CristalIgneo,    // 100 pts
         NucleoFundido,   // 200 pts
-        CorazonVolcanico // 300 pts
+        CorazonVolcanico // 300 pt
+
     }
 
     public ItemType itemType;
