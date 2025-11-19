@@ -31,7 +31,7 @@ public class Selected : MonoBehaviour
 
                 if (obj != null)
                 {
-                    // Mostrar mensaje propio del objeto
+                    
                     textoInteraccion.text = obj.mensaje;
 
                     if (!mostrandoUI)
