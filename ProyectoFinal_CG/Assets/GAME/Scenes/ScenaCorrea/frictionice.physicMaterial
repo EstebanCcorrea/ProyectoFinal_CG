@@ -8,8 +8,8 @@ PhysicsMaterial:
   m_PrefabAsset: {fileID: 0}
   m_Name: frictionice
   serializedVersion: 2
-  m_DynamicFriction: 0
-  m_StaticFriction: 0
-  m_Bounciness: 0
+  m_DynamicFriction: 2.34
+  m_StaticFriction: 2.19
+  m_Bounciness: 0.86
   m_FrictionCombine: 2
   m_BounceCombine: 0

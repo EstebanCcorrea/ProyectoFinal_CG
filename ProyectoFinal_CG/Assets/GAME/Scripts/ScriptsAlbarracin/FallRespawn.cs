@@ -6,6 +6,10 @@ public class FallRespawn : MonoBehaviour
     [Header("Altura mínima para reaparecer")]
     public float fallThreshold = 10f;
 
+    [Header("Audio de muerte")]
+    public AudioSource deathAudioSource;
+    public AudioClip deathSound;
+
     private CharacterController controller;
     private float fallStartY;
     private bool isFalling;
@@ -17,10 +21,9 @@ public class FallRespawn : MonoBehaviour
 
     void Update()
     {
-        // Si NO está tocando el suelo → está en el aire
+        
         if (!controller.isGrounded)
         {
-            // Marca el inicio de la caída
             if (!isFalling)
             {
                 isFalling = true;
@@ -30,7 +33,6 @@ public class FallRespawn : MonoBehaviour
         }
         else
         {
-            // Cuando vuelve a tocar el suelo, analiza la caída
             if (isFalling)
             {
                 float fallDistance = fallStartY - transform.position.y;
@@ -38,7 +40,7 @@ public class FallRespawn : MonoBehaviour
 
                 if (fallDistance > fallThreshold)
                 {
-                    Debug.Log("[FallRespawn] Caída demasiado alta (" + fallDistance + "). Ejecutando respawn con fade...");
+                    Debug.Log("[FallRespawn] Caída demasiado alta (" + fallDistance + "). Ejecutando respawn...");
                     StartCoroutine(RespawnSequence());
                 }
 
@@ -49,30 +51,43 @@ public class FallRespawn : MonoBehaviour
 
     private IEnumerator RespawnSequence()
     {
-        // 1. Fade Out (pantalla negra)
+       
+        PlayDeathSound();
+
         if (FadeManager.Instance != null)
             yield return FadeManager.Instance.FadeOut(0.1f);
 
-        // 2. Respawn real
+    
         CheckpointManager.Instance.RespawnPlayer(gameObject);
 
-        // 3. Fade In (vuelve a la vista del juego)
+      
         if (FadeManager.Instance != null)
             yield return FadeManager.Instance.FadeIn(0.4f);
     }
+
 
     public IEnumerator RespawnSequenceFromOutside()
     {
-        // 1. Fade Out
-        if (FadeManager.Instance != null)
-            yield return FadeManager.Instance.FadeOut(0.1f);
+      
+        PlayDeathSound();
 
-        // 2. Respawn
+       
+        if (FadeManager.Instance != null)
+            yield return FadeManager.Instance.FadeOut(0.3f);
+
+        
         CheckpointManager.Instance.RespawnPlayer(gameObject);
 
-        // 3. Fade In
+     
         if (FadeManager.Instance != null)
             yield return FadeManager.Instance.FadeIn(0.4f);
     }
 
+    private void PlayDeathSound()
+    {
+        if (deathAudioSource != null && deathSound != null)
+        {
+            deathAudioSource.PlayOneShot(deathSound);
+        }
+    }
 }
