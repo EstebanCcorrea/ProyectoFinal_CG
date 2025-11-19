@@ -3,26 +3,14 @@ using UnityEngine;
 public class Hielo : MonoBehaviour
 {
     [Header("Configuración del Hielo")]
-    [Tooltip("Qué tanto tarda en frenar el jugador")]
+    public PhysicsMaterial frictionice;      // El material de hielo del piso
     [Range(0f, 1f)]
-    public float inertia = 0.93f;
+    public float inertia = 0.92f;           // Qué tanto tarda en frenar
+    public float slideForce = 7f;           // Fuerza del deslizamiento
+    public float minSpeed = 0.1f;           // Velocidad mínima para patinar
 
-    [Tooltip("Fuerza de empuje en la dirección actual")]
-    [Range(0f, 20f)]
-    public float glideStrength = 8f;
-
-    [Tooltip("Suaviza el giro (estilo Mario 64)")]
-    [Range(0f, 1f)]
-    public float turnSmoothing = 0.12f;
-
-    [Tooltip("Velocidad mínima para empezar a deslizar")]
-    public float minSpeed = 0.1f;
-
-    [Header("Detección")]
-    public LayerMask iceLayer;  // aquí pones el layer "Hielo" del piso
-
-    CharacterController controller;
-    Vector3 iceVelocity;
+    private CharacterController controller;
+    private Vector3 extraSlideVelocity;
 
     void Start()
     {
@@ -31,49 +19,50 @@ public class Hielo : MonoBehaviour
 
     void Update()
     {
-        // Hacer raycast para detectar suelo de hielo
-        if (IsOnIce())
+        if (IsStandingOnIce())
         {
-            ApplyIceMovement();
+            ApplyIceSliding();
         }
         else
         {
-            iceVelocity = Vector3.zero;
+            extraSlideVelocity = Vector3.zero;
         }
     }
 
-    bool IsOnIce()
+    bool IsStandingOnIce()
     {
         RaycastHit hit;
 
-        // raycast desde los pies del character controller
-        Vector3 origin = transform.position + Vector3.up * 0.2f;
+        // Raycast desde el centro del CharacterController
+        Vector3 origin = transform.position + Vector3.up * 0.1f;
 
-        if (Physics.Raycast(origin, Vector3.down, out hit, 1f, iceLayer))
+        if (Physics.Raycast(origin, Vector3.down, out hit, 1.2f))
         {
-            return true;
+            Collider c = hit.collider;
+
+            // Si el material físico del piso es el que definiste como hielo
+            if (c.sharedMaterial == frictionice)
+                return true;
         }
 
         return false;
     }
 
-    void ApplyIceMovement()
+    void ApplyIceSliding()
     {
-        Vector3 horizontal = new Vector3(controller.velocity.x, 0, controller.velocity.z);
+        // Obtenemos velocidad horizontal del CharacterController
+        Vector3 horizontalVel = new Vector3(controller.velocity.x, 0, controller.velocity.z);
 
-        if (horizontal.magnitude < minSpeed)
-            return;
+        if (horizontalVel.magnitude > minSpeed)
+        {
+            // Mantener inercia
+            extraSlideVelocity *= inertia;
 
-        // Mantener inercia
-        iceVelocity *= inertia;
+            // Empujar en dirección del movimiento actual
+            extraSlideVelocity += horizontalVel.normalized * slideForce * Time.deltaTime;
+        }
 
-        // Empuje extra en dirección del movimiento
-        iceVelocity += horizontal.normalized * glideStrength * Time.deltaTime;
-
-        // Suavizar cambio de dirección
-        iceVelocity = Vector3.Lerp(iceVelocity, horizontal.normalized * iceVelocity.magnitude, turnSmoothing);
-
-        // Aplicar movimiento sin romper al controller
-        controller.Move(iceVelocity * Time.deltaTime);
+        // Aplicamos movimiento extra
+        controller.Move(extraSlideVelocity * Time.deltaTime);
     }
 }

@@ -821,6 +821,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 974238578668270704, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1646945490}
+    - targetCorrespondingSourceObject: {fileID: 974238578668270704, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1646945498}
   m_SourcePrefab: {fileID: 100100000, guid: c708a3b79cd542b42bbfedb17e213bc1, type: 3}
 --- !u!1 &170041982 stripped
 GameObject:
@@ -3633,6 +3636,22 @@ MonoBehaviour:
   m_SkinMeshRef: {fileID: 0}
   m_OriginalMeshObject: {fileID: 0}
   m_Mode: 0
+--- !u!114 &1646945498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646945488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd18ae1c4aff0d43b5da397cbd06773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hielo
+  frictionice: {fileID: 13400000, guid: 2467eda34f383a74e93c4f5649fd45e6, type: 2}
+  inertia: 0.92
+  slideForce: 7
+  minSpeed: 0.1
 --- !u!1 &1683184151
 GameObject:
   m_ObjectHideFlags: 0
