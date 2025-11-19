@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public Slider healthSlider;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI itemsText;
-    
+    public TextMeshProUGUI messageText;
+
 
     private int score;
     private int totalItems;
