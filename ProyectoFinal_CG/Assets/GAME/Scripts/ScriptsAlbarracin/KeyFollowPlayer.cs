@@ -1,21 +1,40 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class KeyFollowPlayer : MonoBehaviour
 {
-    public Vector3 offset = new Vector3(0, 0.5f, -1f); // Ajusta la posiciÛn detr·s del player
+    [Header("Seguimiento")]
+    public Vector3 offset = new Vector3(0, 0.5f, -1f);
+
+    [Header("Sonido")]
+    public AudioClip pickUpSound;       // SONIDO AL RECOGER
+    private AudioSource audioSource;    // Reproductor del sonido
+
     private Transform player;
     private bool isFollowing = false;
+
+    private void Start()
+    {
+        // Crea autom√°ticamente un AudioSource si no existe
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // ‚¨ÖÔ∏è Reproduce sonido UNA sola vez al recolectar
+            if (pickUpSound != null)
+            {
+                audioSource.PlayOneShot(pickUpSound);
+            }
+
             player = other.transform;
-            transform.SetParent(player);  // Ahora la llave se vuelve hija del player
-            transform.localPosition = offset; // Se coloca detr·s del player
+            transform.SetParent(player);
+            transform.localPosition = offset;
             isFollowing = true;
 
-            // Opcional: desactiva fÌsicas para evitar que se caiga o choque
+            // Desactiva f√≠sicas para que no se caiga
             if (TryGetComponent<Rigidbody>(out Rigidbody rb))
             {
                 rb.isKinematic = true;
@@ -28,7 +47,6 @@ public class KeyFollowPlayer : MonoBehaviour
     {
         if (isFollowing)
         {
-            // Permite que la llave mantenga la posiciÛn detr·s del player
             transform.localPosition = offset;
         }
     }

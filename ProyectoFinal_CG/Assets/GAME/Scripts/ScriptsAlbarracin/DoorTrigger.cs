@@ -3,10 +3,15 @@ using System.Collections;
 
 public class DoorTrigger : MonoBehaviour
 {
-    public Transform door;          // La puerta
-    public Vector3 openOffset;      // Dirección y distancia del movimiento
-    public float openSpeed = 2f;    // Velocidad
+    [Header("Puerta")]
+    public Transform door;
+    public Vector3 openOffset;
+    public float openSpeed = 2f;
     public bool requiresKey = true;
+
+    [Header("Sonido")]
+    public AudioSource audioSource;  // AudioSource de la puerta
+    public AudioClip openSound;      // Sonido al abrir
 
     private bool opened = false;
     private Vector3 closedPos;
@@ -47,6 +52,13 @@ public class DoorTrigger : MonoBehaviour
     private void Open()
     {
         opened = true;
+
+        // **Reproducir sonido**
+        if (audioSource != null && openSound != null)
+        {
+            audioSource.PlayOneShot(openSound);
+        }
+
         StartCoroutine(OpenDoor());
     }
 

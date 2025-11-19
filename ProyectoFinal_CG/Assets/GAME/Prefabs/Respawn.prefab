@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5926987569836160052}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.147, y: 0.80000114, z: 1.497}
+  m_LocalPosition: {x: 0.149, y: 0.966, z: 1.451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,9 +78,10 @@ GameObject:
   - component: {fileID: 8782220222803326802}
   - component: {fileID: 8782220222802228626}
   - component: {fileID: 2456304910166713809}
-  m_Layer: 0
+  - component: {fileID: 8171881570874947334}
+  m_Layer: 8
   m_Name: SwitchBase
-  m_TagString: Untagged
+  m_TagString: ObjetoInteractivo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,6 +191,7 @@ GameObject:
   - component: {fileID: 8782220222803326800}
   - component: {fileID: 8782220222802228624}
   - component: {fileID: 6118060968986462064}
+  - component: {fileID: 7790775538663361414}
   m_Layer: 0
   m_Name: SwitchCrystal
   m_TagString: Untagged
@@ -299,9 +301,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8782220222800459640}
-  m_Layer: 0
+  - component: {fileID: 7574114449290457299}
+  - component: {fileID: 8946309814507595389}
+  m_Layer: 8
   m_Name: Respawn
-  m_TagString: Untagged
+  m_TagString: ObjetoInteractivo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8782220222800227160}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2474795, z: -0, w: 0.9688931}
+  m_LocalRotation: {x: 0, y: 0.24748099, z: 0, w: 0.9688928}
   m_LocalPosition: {x: -0.15, y: -3.6499996, z: -13.390774}
   m_LocalScale: {x: 1.94, y: 1.94, z: 1.94}
   m_ConstrainProportionsScale: 1
@@ -379,5 +383,155 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4702464463857932549, guid: 71d246e4e53f6d045995c31f332f6ef0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7574114449290457299}
+    - targetCorrespondingSourceObject: {fileID: 4702464463857932549, guid: 71d246e4e53f6d045995c31f332f6ef0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8946309814507595389}
+    - targetCorrespondingSourceObject: {fileID: 4702464463857932557, guid: 71d246e4e53f6d045995c31f332f6ef0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8171881570874947334}
+    - targetCorrespondingSourceObject: {fileID: 4702464463857932555, guid: 71d246e4e53f6d045995c31f332f6ef0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7790775538663361414}
   m_SourcePrefab: {fileID: 100100000, guid: 71d246e4e53f6d045995c31f332f6ef0, type: 3}
+--- !u!114 &8171881570874947334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782220222800227152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfa0c380f74924fbaaef7cd3e56ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
+  mensaje: Checkpoint
+  puedeDesaparecer: 0
+--- !u!114 &7790775538663361414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782220222800227158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe366cce21539b148b36476bdf44bbca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlataformasGiratorias
+  velocidadRotacion: 50
+--- !u!114 &7574114449290457299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782220222800227160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bfa0c380f74924fbaaef7cd3e56ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjetoInteractivo
+  mensaje: "Estas estructuras te mantendr\xE1n a salvo... Encu\xE9ntralas\n(Checkpoint)"
+  puedeDesaparecer: 0
+--- !u!82 &8946309814507595389
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782220222800227160}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 7b059da369af2b640b460188cfed562a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.416
+  m_Pitch: 1.36
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.1
+  MaxDistance: 1.5
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
