@@ -8,6 +8,8 @@ TagManager:
   - Objeto
   - Statue
   - ObjetoInteractivo
+  - moving platform
+  - Interactable
   layers:
   - Default
   - TransparentFX
