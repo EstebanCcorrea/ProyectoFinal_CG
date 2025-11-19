@@ -3,10 +3,20 @@ using UnityEngine;
 public class ObjetoInteractivo : MonoBehaviour
 {
     [TextArea]
-    public string mensaje = "Presiona E para interactuar";
+    public string mensaje = "";
+
+    [Header("Acciones")]
+    public bool puedeDesaparecer = false;
 
     public void ActivarObjeto()
     {
-        Destroy(gameObject);
+        if (puedeDesaparecer)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Este objeto no desaparece, solo muestra información.");
+        }
     }
 }
