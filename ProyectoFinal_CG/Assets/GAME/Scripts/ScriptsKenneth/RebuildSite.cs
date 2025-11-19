@@ -4,12 +4,12 @@ using UnityEngine.UI;
 public class RebuildSite : MonoBehaviour
 {
     [Header("Buildings")]
-    public GameObject oldBuilding;   // Building 1
-    public GameObject newBuilding;   // Nueva casa
+    public GameObject oldBuilding;
+    public GameObject newBuilding;
 
     [Header("UI")]
-    public GameObject rebuildPanel;  // Panel con el texto/botón
-    public Button rebuildButton;     // Botón Re-Build (opcional)
+    public GameObject rebuildPanel;
+    public Button rebuildButton;
 
     private bool playerInside = false;
     private bool canRebuild = false;
@@ -20,7 +20,6 @@ public class RebuildSite : MonoBehaviour
         if (newBuilding != null) newBuilding.SetActive(false);
         if (rebuildPanel != null) rebuildPanel.SetActive(false);
 
-        // El botón sigue llamando al mismo método (por si luego lo quieres usar)
         if (rebuildButton != null)
         {
             rebuildButton.onClick.RemoveAllListeners();
@@ -30,7 +29,6 @@ public class RebuildSite : MonoBehaviour
 
     private void Update()
     {
-        // Reconstruir con la tecla R
         if (playerInside && canRebuild && !alreadyRebuilt)
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -46,12 +44,11 @@ public class RebuildSite : MonoBehaviour
 
         playerInside = true;
 
-        // Más adelante aquí metes la condición real de ítems
-        canRebuild = true; // por ahora siempre true
+        canRebuild = true;
 
         if (canRebuild && rebuildPanel != null)
         {
-            rebuildPanel.SetActive(true);   // Mostrar panel de “Rebuild (R)”
+            rebuildPanel.SetActive(true);
         }
     }
 
@@ -77,7 +74,13 @@ public class RebuildSite : MonoBehaviour
         if (rebuildPanel != null)
             rebuildPanel.SetActive(false);
 
-        // Desactivar el trigger para no usarlo otra vez
+
+        if (KGameManager.Instance != null)
+        {
+            KGameManager.Instance.BuildingRebuilt();
+        }
+
+
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
     }
