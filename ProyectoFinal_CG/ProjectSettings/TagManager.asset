@@ -7,8 +7,7 @@ TagManager:
   - CinemachineTarget
   - Objeto
   - Statue
-  - moving platform
-  - Enemy
+  - ObjetoInteractivo
   layers:
   - Default
   - TransparentFX
