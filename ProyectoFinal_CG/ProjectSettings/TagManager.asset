@@ -7,11 +7,12 @@ TagManager:
   - CinemachineTarget
   - Objeto
   - Statue
+  - Hielo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hielo
   - Water
   - UI
   - Interactable
