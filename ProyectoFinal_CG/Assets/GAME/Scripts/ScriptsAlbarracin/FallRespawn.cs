@@ -60,4 +60,19 @@ public class FallRespawn : MonoBehaviour
         if (FadeManager.Instance != null)
             yield return FadeManager.Instance.FadeIn(0.4f);
     }
+
+    public IEnumerator RespawnSequenceFromOutside()
+    {
+        // 1. Fade Out
+        if (FadeManager.Instance != null)
+            yield return FadeManager.Instance.FadeOut(0.1f);
+
+        // 2. Respawn
+        CheckpointManager.Instance.RespawnPlayer(gameObject);
+
+        // 3. Fade In
+        if (FadeManager.Instance != null)
+            yield return FadeManager.Instance.FadeIn(0.4f);
+    }
+
 }
