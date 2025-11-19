@@ -8,6 +8,7 @@ TagManager:
   - Objeto
   - Statue
   - moving platform
+  - Enemy
   layers:
   - Default
   - TransparentFX
