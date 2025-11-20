@@ -14,8 +14,8 @@ public class GlobalManager : MonoBehaviour
     [Header("UI General")]
     public Slider healthSlider;
     public TextMeshProUGUI Score;
-    public TextMeshProUGUI Items;
-    public TextMeshProUGUI Mensaje;
+    //public TextMeshProUGUI Items;
+    //public TextMeshProUGUI Mensaje;
 
     [Header("UI Final")]
     [SerializeField] private TMP_Text remainingText;
@@ -67,8 +67,8 @@ public class GlobalManager : MonoBehaviour
             playerHealth = Object.FindFirstObjectByType<PlayerHealth>();
             healthSlider = Object.FindFirstObjectByType<Slider>();
             Score = GameObject.Find("Score")?.GetComponent<TextMeshProUGUI>();
-           Items = GameObject.Find("Items")?.GetComponent<TextMeshProUGUI>();
-           Mensaje = GameObject.Find("Mensaje")?.GetComponent<TextMeshProUGUI>();
+            //Items = GameObject.Find("Items")?.GetComponent<TextMeshProUGUI>();
+            //Mensaje = GameObject.Find("Mensaje")?.GetComponent<TextMeshProUGUI>();
 
             remainingText = GameObject.Find("RemainingText")?.GetComponent<TMP_Text>();
             timeText = GameObject.Find("TimeText")?.GetComponent<TMP_Text>();
@@ -81,7 +81,7 @@ public class GlobalManager : MonoBehaviour
             totalSites = Object.FindObjectsByType<RebuildSite>(FindObjectsSortMode.None).Length;
 
             UpdateScoreUI();
-            UpdateItemsUI();
+            //UpdateItemsUI();
             UpdateRemainingText();
 
             PlayMusic(levelMusic);
@@ -105,7 +105,7 @@ public class GlobalManager : MonoBehaviour
         score += value;
         collectedItemsCount++;
         UpdateScoreUI();
-        UpdateItemsUI();
+        //UpdateItemsUI();
     }
 
     public void UpdateHealthUI(float current, float max)
@@ -124,13 +124,13 @@ public class GlobalManager : MonoBehaviour
         }
     }
 
-    private void UpdateItemsUI()
-    {
-        if (Items != null)
-        {
-            Items.text = "Ítems: " + collectedItemsCount + " / " + totalItems;
-        }
-    }
+    //private void UpdateItemsUI()
+    //{
+    //    if (Items != null)
+    //    {
+    //        Items.text = "Ítems: " + collectedItemsCount + " / " + totalItems;
+    //    }
+    //}
 
     private void UpdateRemainingText()
     {
