@@ -7,17 +7,20 @@ TagManager:
   - CinemachineTarget
   - Objeto
   - Statue
-  - Hielo
+  - ObjetoInteractivo
+  - moving platform
+  - Interactable
+  - Heart
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Hielo
+  - 
   - Water
   - UI
   - Interactable
   - Player
-  - 
+  - POI
   - 
   - 
   - 
