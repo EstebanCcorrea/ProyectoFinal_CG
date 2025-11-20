@@ -34463,7 +34463,7 @@ GameObject:
   - component: {fileID: 1984095423}
   - component: {fileID: 1984095422}
   m_Layer: 0
-  m_Name: Nubes
+  m_Name: neblina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
