@@ -6,8 +6,7 @@ public class CollectibleItem : MonoBehaviour
     {
         CristalIgneo,    // 100 pts
         NucleoFundido,   // 200 pts
-        CorazonVolcanico // 300 pt
-
+        CorazonVolcanico // 300 pts
     }
 
     public ItemType itemType;
@@ -15,11 +14,18 @@ public class CollectibleItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        // Comprobamos que el GlobalManager exista
+        if (GlobalManager.Instance != null)
         {
-            // Aquí se registraría el ítem recolectado
-            GameManager.Instance.RegisterItemCollected(scoreValue);
-            Destroy(gameObject);
+            GlobalManager.Instance.RegisterItemCollected(scoreValue);
         }
+        else
+        {
+            Debug.LogWarning("GlobalManager.Instance es NULL al recoger item: " + name);
+        }
+
+        Destroy(gameObject);
     }
 }

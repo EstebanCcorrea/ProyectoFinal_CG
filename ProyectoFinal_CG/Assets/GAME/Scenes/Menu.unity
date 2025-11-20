@@ -1004,16 +1004,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnStartButton
-        m_Mode: 1
+      - m_Target: {fileID: 1457804922}
+        m_TargetAssemblyTypeName: GlobalManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ScenaDuque
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1331145836
@@ -1242,18 +1242,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GlobalManager
   playerHealth: {fileID: 0}
-  healthSlider: {fileID: 0}
-  scoreText: {fileID: 0}
-  itemsText: {fileID: 0}
-  messageText: {fileID: 0}
-  musicSource: {fileID: 0}
-  menuMusic: {fileID: 0}
-  levelMusic: {fileID: 0}
   playerSpawnPoint: {fileID: 0}
+  healthSlider: {fileID: 0}
+  Score: {fileID: 0}
+  Items: {fileID: 0}
+  Mensaje: {fileID: 0}
   remainingText: {fileID: 0}
   endPanel: {fileID: 0}
   timeText: {fileID: 0}
   itemsTextK: {fileID: 0}
+  musicSource: {fileID: 0}
+  menuMusic: {fileID: 0}
+  levelMusic: {fileID: 0}
 --- !u!1 &1495126595
 GameObject:
   m_ObjectHideFlags: 0
