@@ -66,9 +66,9 @@ public class GlobalManager : MonoBehaviour
         {
             playerHealth = Object.FindFirstObjectByType<PlayerHealth>();
             healthSlider = Object.FindFirstObjectByType<Slider>();
-            Score = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
-           Items = GameObject.Find("ItemsText")?.GetComponent<TextMeshProUGUI>();
-           Mensaje = GameObject.Find("MessageText")?.GetComponent<TextMeshProUGUI>();
+            Score = GameObject.Find("Score")?.GetComponent<TextMeshProUGUI>();
+           Items = GameObject.Find("Items")?.GetComponent<TextMeshProUGUI>();
+           Mensaje = GameObject.Find("Mensaje")?.GetComponent<TextMeshProUGUI>();
 
             remainingText = GameObject.Find("RemainingText")?.GetComponent<TMP_Text>();
             timeText = GameObject.Find("TimeText")?.GetComponent<TMP_Text>();
