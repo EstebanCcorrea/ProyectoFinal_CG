@@ -9,30 +9,28 @@ public class GlobalManager : MonoBehaviour
 
     [Header("Jugador")]
     public PlayerHealth playerHealth;
-
-    [Header("UI")]
-    public Slider healthSlider;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI itemsText;
-    public TextMeshProUGUI messageText;
-
-    private int score;
-    private int totalItems;
-    private int collectedItemsCount;
-
-    [Header("Música")]
-    public AudioSource musicSource;  // Para música general
-    public AudioClip menuMusic;
-    public AudioClip levelMusic;
-
-    [Header("Spawn")]
     public Transform playerSpawnPoint;
 
-    [Header("KGameManager")]
+    [Header("UI General")]
+    public Slider healthSlider;
+    public TextMeshProUGUI Score;
+    public TextMeshProUGUI Items;
+    public TextMeshProUGUI Mensaje;
+
+    [Header("UI Final")]
     [SerializeField] private TMP_Text remainingText;
     [SerializeField] private GameObject endPanel;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private TMP_Text itemsTextK;
+
+    [Header("Música")]
+    public AudioSource musicSource;
+    public AudioClip menuMusic;
+    public AudioClip levelMusic;
+
+    private int score;
+    private int totalItems;
+    private int collectedItemsCount;
 
     private int totalSites;
     private int rebuiltSites;
@@ -43,33 +41,69 @@ public class GlobalManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);  // Eliminar duplicados
+            Destroy(gameObject);
             return;
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);  // No destruir el GameManager entre escenas
+        DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        totalItems = Object.FindObjectsOfType<CollectibleItem>().Length;  // Contar los ítems
-        totalSites = FindObjectsOfType<RebuildSite>().Length;  // Contar los sitios a reconstruir
-        UpdateScoreUI();
-        UpdateItemsUI();
-        PlayMusic(menuMusic);  // Música de menú al inicio
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        if (endPanel != null)
-            endPanel.SetActive(false);
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-        UpdateRemainingText();
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Solo buscar referencias si no estamos en el menú
+        if (scene.name != "Menu")
+        {
+            playerHealth = Object.FindFirstObjectByType<PlayerHealth>();
+            healthSlider = Object.FindFirstObjectByType<Slider>();
+            Score = GameObject.Find("ScoreText")?.GetComponent<TextMeshProUGUI>();
+           Items = GameObject.Find("ItemsText")?.GetComponent<TextMeshProUGUI>();
+           Mensaje = GameObject.Find("MessageText")?.GetComponent<TextMeshProUGUI>();
+
+            remainingText = GameObject.Find("RemainingText")?.GetComponent<TMP_Text>();
+            timeText = GameObject.Find("TimeText")?.GetComponent<TMP_Text>();
+            itemsTextK = GameObject.Find("ItemsTextK")?.GetComponent<TMP_Text>();
+            endPanel = GameObject.Find("EndPanel");
+
+            playerSpawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawn")?.transform;
+
+            totalItems = Object.FindObjectsByType<CollectibleItem>(FindObjectsSortMode.None).Length;
+            totalSites = Object.FindObjectsByType<RebuildSite>(FindObjectsSortMode.None).Length;
+
+            UpdateScoreUI();
+            UpdateItemsUI();
+            UpdateRemainingText();
+
+            PlayMusic(levelMusic);
+        }
+        else
+        {
+            PlayMusic(menuMusic);
+        }
+    }
+
+    private void Update()
+    {
+        if (isRunning)
+        {
+            elapsedTime += Time.deltaTime;
+        }
     }
 
     public void RegisterItemCollected(int value)
     {
         score += value;
-        collectedItemsCount++;  // Incrementar el contador de ítems recolectados
-
+        collectedItemsCount++;
         UpdateScoreUI();
         UpdateItemsUI();
     }
@@ -84,26 +118,27 @@ public class GlobalManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        if (scoreText != null)
+        if (Score != null)
         {
-            scoreText.text = "Puntaje: " + score;
+            Score.text = "Puntaje: " + score;
         }
     }
 
     private void UpdateItemsUI()
     {
-        if (itemsText != null)
+        if (Items != null)
         {
-            itemsText.text = "Ítems: " + collectedItemsCount + " / " + totalItems;
+            Items.text = "Ítems: " + collectedItemsCount + " / " + totalItems;
         }
     }
 
     private void UpdateRemainingText()
     {
-        if (remainingText == null) return;
-
-        int remaining = totalSites - rebuiltSites;
-        remainingText.text = "Edificaciones restantes: " + remaining;
+        if (remainingText != null)
+        {
+            int remaining = totalSites - rebuiltSites;
+            remainingText.text = "Edificaciones restantes: " + remaining;
+        }
     }
 
     public void BuildingRebuilt()
@@ -128,14 +163,7 @@ public class GlobalManager : MonoBehaviour
             timeText.text = "Tiempo total: " + FormatTime(elapsedTime);
 
         if (itemsTextK != null)
-        {
-            // Placeholder: aquí luego pondremos los ítems reales
-            int collectedItems = 0;
-            itemsTextK.text = "Ítems recolectados: " + collectedItems;
-        }
-
-        // Pausar todo (si se quiere)
-        // Time.timeScale = 0f;
+            itemsTextK.text = "Ítems recolectados: " + collectedItemsCount;
     }
 
     private string FormatTime(float time)
@@ -165,7 +193,6 @@ public class GlobalManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.buildIndex);
     }
 
-    // Método para obtener el punto de spawn del jugador
     public Transform GetSpawnPoint()
     {
         return playerSpawnPoint;
