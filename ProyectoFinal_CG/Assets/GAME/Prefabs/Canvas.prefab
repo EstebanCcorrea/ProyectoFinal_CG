@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 7707189928471312212}
   - component: {fileID: 1672085901452640596}
   - component: {fileID: 8012232195274250910}
+  - component: {fileID: 1006880617200419036}
   m_Layer: 5
   m_Name: PanelScore
   m_TagString: Untagged
@@ -666,6 +667,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1006880617200419036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905694502923501839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fbb938379c0c3468ca9f9af0f48763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreUI
+  txtScore: {fileID: 4150809727635525924}
 --- !u!1 &7977914348809418101
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +963,7 @@ GameObject:
   - component: {fileID: 7101046773702732718}
   - component: {fileID: 3521384806518296958}
   - component: {fileID: 3471945492475230455}
-  - component: {fileID: 9032768486379571488}
+  - component: {fileID: 2594921668115505686}
   m_Layer: 5
   m_Name: PanelTime
   m_TagString: Untagged
@@ -1017,7 +1031,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9032768486379571488
+--- !u!114 &2594921668115505686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1028,6 +1042,6 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 599ba5e6962ee0647985606a83436d9f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimerSimple
+  m_EditorClassIdentifier: Assembly-CSharp::TimerSimpleUI
   txtMinutos: {fileID: 8086580524015594066}
   txtSegundos: {fileID: 6077662731584288371}

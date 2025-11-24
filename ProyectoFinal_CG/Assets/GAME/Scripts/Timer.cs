@@ -1,26 +1,46 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimerSimpleUI : MonoBehaviour
 {
-    [Header("Referencias UI")]
     public TextMeshProUGUI txtMinutos;
     public TextMeshProUGUI txtSegundos;
 
-    private float tiempo;
+    private float tiempo = 0f;
+
+    private void OnEnable()
+    {
+        // Resetear tiempo al entrar a escena que no sea menú
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            tiempo = 0f;
+        }
+    }
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            if (txtMinutos != null) txtMinutos.text = "00";
+            if (txtSegundos != null) txtSegundos.text = "00";
+            return;
+        }
+
         tiempo += Time.deltaTime;
 
         int minutos = Mathf.FloorToInt(tiempo / 60f);
         int segundos = Mathf.FloorToInt(tiempo % 60f);
 
-        // Actualizar los textos
         if (txtMinutos != null)
             txtMinutos.text = minutos.ToString("00");
 
         if (txtSegundos != null)
             txtSegundos.text = segundos.ToString("00");
+    }
+
+    public void GuardarTiempoFinal()
+    {
+        GameManager1.Instance.GuardarTiempo(tiempo);
     }
 }

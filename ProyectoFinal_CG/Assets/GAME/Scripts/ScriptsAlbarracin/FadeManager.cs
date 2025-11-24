@@ -20,9 +20,7 @@ public class FadeManager : MonoBehaviour
         }
     }
 
-    // ------------------------------------------------------------
-    // FADE OUT (PANTALLA NEGRA)
-    // ------------------------------------------------------------
+
     public IEnumerator FadeOut(float duration)
     {
         float t = 0;
@@ -42,9 +40,6 @@ public class FadeManager : MonoBehaviour
     }
 
 
-    // ------------------------------------------------------------
-    // FADE IN (VUELVE A VERSE EL JUEGO)
-    // ------------------------------------------------------------
     public IEnumerator FadeIn(float duration)
     {
         float t = 0;

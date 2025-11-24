@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/GAME/Scenes/Menu.unity
     guid: ec98586ea869333488f3305b6e05beaa
   - enabled: 1
-    path: Assets/GAME/Scenes/ScenaDuque.unity
-    guid: 4cd342d01f2626844ad15ee887c787aa
-  - enabled: 1
     path: Assets/GAME/Scenes/ScenaAlbarracin.unity
     guid: 338028661982d8b42962bd56581619a8
+  - enabled: 1
+    path: Assets/GAME/Scenes/ScenaDuque.unity
+    guid: 4cd342d01f2626844ad15ee887c787aa
   - enabled: 1
     path: Assets/GAME/Scenes/ScenaCorrea.unity
     guid: eb60dc731dd4f484fadd86e320f4519b
