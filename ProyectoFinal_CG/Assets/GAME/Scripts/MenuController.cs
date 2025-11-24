@@ -3,10 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public string nombreEscenaJuego = "Nivel1"; // Cambia por tu escena
+    [Header("Escenas")]
+    public string nombreEscenaJuego = ""; 
+    public string nombreEscenaMenu = "Menu";   
 
+    // Llamar desde el botón "Jugar"
     public void Jugar()
     {
         SceneManager.LoadScene(nombreEscenaJuego);
+    }
+
+   
+    public void SalirJuego()
+    {
+        Debug.Log("Saliendo del juego...");
+        Application.Quit();
     }
 }

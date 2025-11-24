@@ -11,11 +11,8 @@ public class TimerSimpleUI : MonoBehaviour
 
     private void OnEnable()
     {
-        // Resetear tiempo al entrar a escena que no sea menú
-        if (SceneManager.GetActiveScene().name != "Menu")
-        {
-            tiempo = 0f;
-        }
+        // Cargar tiempo previamente guardado
+        tiempo = GameManager1.Instance != null ? GameManager1.Instance.tiempoGuardado : 0f;
     }
 
     void Update()
@@ -37,10 +34,15 @@ public class TimerSimpleUI : MonoBehaviour
 
         if (txtSegundos != null)
             txtSegundos.text = segundos.ToString("00");
+
+        // Guardar continuamente en GameManager
+        if (GameManager1.Instance != null)
+            GameManager1.Instance.tiempoGuardado = tiempo;
     }
 
     public void GuardarTiempoFinal()
     {
-        GameManager1.Instance.GuardarTiempo(tiempo);
+        if (GameManager1.Instance != null)
+            GameManager1.Instance.GuardarTiempo(tiempo);
     }
 }
